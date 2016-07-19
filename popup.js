@@ -2,10 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var submit = document.getElementById("addAmount");
   var total = document.getElementById("total");
+  var goal = document.getElementById("goal");
   var amount = document.getElementById("amount");
 
-  chrome.storage.sync.get('total', function(items) {
+  chrome.storage.sync.get(['goal', 'total'], function(items) {
     total.innerHTML = items.total;
+    goal.innerHTML = items.goal;
   })
   
   submit.addEventListener('click', function() {
