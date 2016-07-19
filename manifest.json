@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+
+  "name": "Protein Tracker",
+  "description": "Helps you set a goal for, and track your protein intake.",
+  "version": "1.0",
+
+  "browser_action: {
+    
+  }
+}
