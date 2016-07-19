@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
   })
   
   submit.addEventListener('click', function() {
-    chrome.storage.sync.get('total', function(items) {
+    chrome.storage.sync.get(['goal', 'total'], function(items) {
       var newTotal = 0;
 
       if (items.total) {
@@ -26,6 +26,16 @@ document.addEventListener('DOMContentLoaded', function() {
       chrome.storage.sync.set({ 'total': newTotal });
       total.innerHTML = newTotal;
       amount.value = '';
+
+      if (newTotal >= items.goal) {
+        var opt = {
+          type: "basic",
+          title: "Goal reached!",
+          message: "Congratulations! You've reached your protein goal for today!",
+          iconUrl: "icon.png"
+        }
+        chrome.notifications.create('success', opt, function() {});
+      }
     });  
   });
 
